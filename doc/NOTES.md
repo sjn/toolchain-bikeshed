@@ -4,29 +4,29 @@ This document contains thoughts on installing all kinds of things! Please read t
 
 ## Original sources
 
-See http://pad.hackeriet.no/p/p6-deploy for initial discussions and definitions.
-See http://pad.hackeriet.no/p/p6-deploy-spec for ideas about metadata formats and expected files and fields.
-See http://pad.hackeriet.no/p/p6-deploy-guidelines for more in-depth thoughts of the deployment process.
+- See http://pad.hackeriet.no/p/p6-deploy for initial discussions and definitions.
+- See http://pad.hackeriet.no/p/p6-deploy-spec for ideas about metadata formats and expected files and fields.
+- See http://pad.hackeriet.no/p/p6-deploy-guidelines for more in-depth thoughts of the deployment process.
 
 ## What can be a dependency?
 
-    - Perl 6 Modules
-    - Non-Perl 6 Modules (e.g. when using Inline::Perl5, to depend on Perl 5's DBI)
-    - Binary shared libraries (libmysql.so)
-    - Binary executables (/usr/sbin/ps)
-    - Services (ntpd, pop3, imaps)
-    - System resources (disk storage, unused port 80, minimum RAM)
+- Perl 6 Modules
+- Non-Perl 6 Modules (e.g. when using Inline::Perl5, to depend on Perl 5's DBI)
+- Binary shared libraries (libmysql.so)
+- Binary executables (/usr/sbin/ps)
+- Services (ntpd, pop3, imaps)
+- System resources (disk storage, unused port 80, minimum RAM)
 
 ## What types of dependencies do we have?
 
-    - run-depends - Perl 6 dependencies for regular use of the software, during the build step and after it has been installed (in META.info: "depends")
-    - build-depends - deps only used during the build step of the installation
-    - test-depends - deps only used during the test step of the installation
-    - Recommended
-    - Suggested (is this necessary?)
-    - Notes: 
-        - run-depends - deps only used during the runtime (e.g. to install rpm you need only these deps)
-        - To run tests during build/install, both build-depends and test-depends have to be satisfied
+- run-depends - Perl 6 dependencies for regular use of the software, during the build step and after it has been installed (in META.info: "depends")
+- build-depends - deps only used during the build step of the installation
+- test-depends - deps only used during the test step of the installation
+- Recommended
+- Suggested (is this necessary?)
+- Notes: 
+    - run-depends - deps only used during the runtime (e.g. to install rpm you need only these deps)
+    - To run tests during build/install, both build-depends and test-depends have to be satisfied
 
 ## General - principles, marketing, memes
 
@@ -44,27 +44,27 @@ See http://pad.hackeriet.no/p/p6-deploy-guidelines for more in-depth thoughts of
 
 ## Dependency management
 
-	- Bundling dependencies with your code, with an easy way to update them if needed
-		- Can this be made possible/optional?
-	- Including "rules" with your code that make it easy to build dependencies wherever necessary (Carton-way?)
-	- Perl 5 dependencies
-	- Non-perl deps (debian packages, whatnot)
-		- Compiled/shared object libraries (/usr/lib/libfoo.so)
-		- Dependencies are handled nicely by rpm/deb. Use their facilities! (requires a canonical way of specifying names, that work across packaging systems and their different conventions)
-		- Supporting services that a Perl 6 application may need. (apache, nginx, nagios, ntpd, etc.)
-	- OS-specific deps
-		- the same depencencies can have different names on different OSes
-		- this can be solved by using the most-upstream name of the dependency (e.g. )
-	- Dev environment recommendations
+- Bundling dependencies with your code, with an easy way to update them if needed
+	- Can this be made possible/optional?
+- Including "rules" with your code that make it easy to build dependencies wherever necessary (Carton-way?)
+- Perl 5 dependencies
+- Non-perl deps (debian packages, whatnot)
+	- Compiled/shared object libraries (/usr/lib/libfoo.so)
+	- Dependencies are handled nicely by rpm/deb. Use their facilities! (requires a canonical way of specifying names, that work across packaging systems and their different conventions)
+	- Supporting services that a Perl 6 application may need. (apache, nginx, nagios, ntpd, etc.)
+- OS-specific deps
+	- the same depencencies can have different names on different OSes
+	- this can be solved by using the most-upstream name of the dependency (e.g. )
+- Dev environment recommendations
 
 ## Versioning
 
-	- of the compiler/runtime (rakudo-parrot, version x)
-	- of the dependencies used
-		- version-locking is common for production installations, see cpanfile.snapshot of Carton
-	- of the software provided
-		- Separate API/protocol/file format version numbers?
-	- !!! RPM versioning and upgrading is not easily compatible with Perl 6 (as Perl 6 allows to install more than one version of module)
+- of the compiler/runtime (rakudo-parrot, version x)
+- of the dependencies used
+	- version-locking is common for production installations, see cpanfile.snapshot of Carton
+- of the software provided
+	- Separate API/protocol/file format version numbers?
+- !!! RPM versioning and upgrading is not easily compatible with Perl 6 (as Perl 6 allows to install more than one version of module)
 
 # Software Lifecycle management
 
@@ -144,11 +144,11 @@ Scenarios
 
 ## Relevant software
 
-    - Panda https://github.com/tadzik/panda
-    - Zef https://github.com/ugexe/zef
-    - Rakudo build and installation files https://github.com/rakudo/rakudo/
-    - The CompUnitRepo MANIFEST
-	- Make it use SHA-1 hashes like git, so you don't have to read MANIFEST or anything to figure out which 'file number' is free
+- Panda https://github.com/tadzik/panda
+- Zef https://github.com/ugexe/zef
+- Rakudo build and installation files https://github.com/rakudo/rakudo/
+- The CompUnitRepo MANIFEST
+- Make it use SHA-1 hashes like git, so you don't have to read MANIFEST or anything to figure out which 'file number' is free
 
 # Related links
 - Synopsis 22: Distributions, Recommendations, Delivery and Installation: http://design.perl6.org/S22.html

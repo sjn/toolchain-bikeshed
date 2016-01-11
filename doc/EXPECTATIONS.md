@@ -58,12 +58,12 @@
 		3. If point 2.4. is true (installing the test suite), then build and install these test dependencies in the same way the original package is configured to be built and installed. If point 2C is set (make a self-contained install) make sure you reuse the staging area from the original install config.
 		3. If an error happens during determining the test dependencies (e.g. some packages aren't available) then stop the build process and offer the bugtracker URL (and some useful copypastable info) for giving feedback to upstream.
 	2. Check if your runtime dependencies are met.
-		3. If they are not, then do a separate download and install for each of these dependencies. Install these in the same way as the original package is configured to be built and installed. If point 2.3. is true (make a self-contained install) make sure you reuse the staging area from the original installation.
+		3. If they are not, then do a separate download and install for each of these dependencies. Install these in the same way as the original package is configured to be built and installed. If point 2.iii. is true (make a self-contained install) make sure you reuse the staging area from the original installation.
 		3. If an error happens during determining the run dependencies (e.g. some packages aren't available) then stop the build process and offer the bugtracker URL (and some useful copypastable info) for giving feedback to upstream.
 	2. Create a directory specifically for placing the resulting files of the build (e.g. "/tmp/$USER-build-myapp-$UUID").
 		3. If point 2.3. is true (make a self-contained install) don't create a new directory, instead use the staging area supplied.
 	2. Copy any static source files to the build directory. The build directory tree should look similar to what is expected to be the final installation locations. E.g. if a file is expected to be installed in "/etc/myapp/sites.d" then this file should be found in "/tmp/$USER-build-myapp-$UUID/etc/myapp/sites.d".
-	2. If 2.4. is true (installing the test suite), copy the test suite into the build directory, taking care to keep it separate from other installations of the same software, their versions and authorities.
+	2. If 2.iv is true (installing the test suite), copy the test suite into the build directory, taking care to keep it separate from other installations of the same software, their versions and authorities.
 	2. Optionally, apply patches to source files (e.g. local fixes to bugs while you wait for upstream to publish their fixes). If patches are applied, consider changing the source authority of the package to yourself!
 	2. Optionally, generate any source files that need pre-build generating. If appropriate, consider changing the source authority of the package to yourself.
 	2. Optionally, apply filters to source files (e.g. minify CSS and JS files or create man files from POD).
@@ -72,6 +72,6 @@
 		3. Look up in the system-specific installation target index where each file is expected to be installed.
 		3. Copy each source file into target directory i the build tree.
 	1. Run pre-install tests
-	1. If 2.2 is true, install into the staging area.
+	1. If 2.ii is true, install into the staging area.
 
 

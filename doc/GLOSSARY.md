@@ -13,22 +13,26 @@ Operative System or distribution (e.g. RedHat Linux, Debian Linux, FreeBSD, Sola
 "The Perl 6 module deployment stanza"
 
 Consists of several steps. All of these should at some point be run, but they don't have to be run "at the same time". The sequence has the following steps:
+
+- Fetch
 - Unpack/Update source
 - Check if dependencies are met
 - Build
    - Create build directory
    - Apply patches
-   - Generate data files
+   - Generate files
    - Apply filters
    - Create precompiled library files
    - Populate the build directory with above files
 - Pre-install test of everything in the build directory
 - Install
     - Either Preparatory Install into a staging area (for Packaging)
-    - Or OS Vendor Install
+    - Or OS Vendor Install (alongside/overriding system packages)
     - Or System Install
+    - Or Core Install (e.g. into a Perl 6 implementation repository tree)
 - Optional Install-tests
 - Optional Post-install test, if tests and test dependencies have been installed
+- Uninstall
 
 ### Pre-compilation
 
@@ -48,18 +52,19 @@ What are we trying to achieve when we install something?
     - Installation of a Module install or Application install into a Docker image, chroot(1) jail, OpenSolaris container or equivalent.
     - The install has to be self-contained, without any unresolved external dependencies.
 
-| Deployment Authority | Scenario    | Target  | Precomp |
-|----------------------|-------------|---------|---------|
-| OS (vendor)          | Module      | system  | yes     |
-| OS (vendor)          | Application | system  | yes     |
-| OS (vendor)          | Packaging   | staging | yes     |
-| OS (vendor)          | Image       | staging | yes     |
-| Company (site)       | Module      | site    | yes     |
-| Company (site)       | Application | site    | yes     |
-| Company (site)       | Packaging   | staging | yes     |
-| Company (site)       | Image       | staging | yes     |
-| Developer (local)    | Module      | user    | no      |
-| Developer (local)    | Application | user    | no      |
+| Deployment Authority   | Scenario    | Target  | Precomp |
+|------------------------|-------------|---------|---------|
+| OS (vendor)            | Module      | system  | yes     |
+| OS (vendor)            | Application | appdir  | yes     |
+| OS (vendor)            | Packaging   | staging | yes     |
+| OS (vendor)            | Image       | staging | yes     |
+| Company (site)         | Module      | site    | yes     |
+| Company (site)         | Application | appdir  | yes     |
+| Company (site)         | Packaging   | staging | yes     |
+| Company (site)         | Image       | staging | yes     |
+| Developer (local)      | Module      | user    | no      |
+| Developer (local)      | Application | user    | no      |
+| Perl6 Community (core) | Module      | core    | yes     |
 
 ### Installation purpose
 
@@ -123,6 +128,3 @@ A directory intended to be used as a root for installation, instead of the norma
 # TODO
 
 ### CompUnitRepo
-
-
-

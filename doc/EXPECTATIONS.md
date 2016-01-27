@@ -1,33 +1,33 @@
 # Expectations of Perl 6 deployment tools
 
-## Original source for this document
+## What do we have to keep in mind when installing software?
 
-- See http://pad.hackeriet.no/p/p6-deploy for initial discussions and definitions.
-- See http://pad.hackeriet.no/p/p6-deploy-spec for ideas about metadata formats and expected files and fields.
-- See http://pad.hackeriet.no/p/p6-deploy-guidelines for more in-depth thoughts of the deployment process.
-
-## Initial considerations when doing deployment of software
-
-* Keep track of deployment authority.
+* Keep track of the [deployment authority](GLOSSARY.md#deployment-authority)
     - Which tools have the authority to delete or update something once it has been deployed?
     - How do you ensure that one deployment tool/scheme doesn't muck around with another's files?
-* What kind of files may be installed?
-    - A software package doesn't consist only of library files and executables.
+* The kind of files that may be installed
+    - A software package doesn't only consist of library files and executables.
     - You may have to install templates, configuration files, documentation, init scripts, database content, third-party client libraries, static data, user interface instructions, and lots more.
-* Should files be filtered or modified before installation?
+* Files may be filtered or modified before installation
     - You may want to minify your CSS and JS files, generate bitmaps from your SVG originals or build your PDF files from the source documentation.
-* What does your application depend upon?
+* Dependencies
     - What deployment authorities can supply these dependencies?
     - How about non-deployable dependencies like available disk space, port numbers and network services?
-* Some files may also have to be fixed, patched or generated before deployment.
+* Last-minute patches, bugfixes, security updates or auto-generated data
     - How do you handle local patches?
     - Do you want to be able to produce files that contain host- or OS-specific data?
-* Installation context is also important.
+* Installation context
     - Is your deployment tool used to prepare packages used for other deployment authorities?
-    - While a "system install" may put your files in /usr/local/lib, and a "local install" installs into $HOME/lib, where and how should you install your files when they are intended to be made into an RPM package? How about a Docker image? How about a jail or other chroot-like environment?
-* How about management of configurable resources? Let's say your Nagios installation has a directory where you can drop monitoring scripts. How can the deployment system identify that directory? If any configuration files need to be modified or added, how should this be done? Whose responsibility is it to do this?
-* How about specifying services offered or configurable resources shared by your own software, so that other projects may correctly "drop off" configuration files to set up your software? How can you specify that your software offers such a configurable service that other software can depend upon and use?
-* Feedback loops also need some love! Each of these files may need improvement, so it makes sense to keep them easy to understand, and to make it simple to offer improvements (e.g. with a pull request).
+    - While a "[system install](GLOSSARY.md#system-install)" may put your files in /usr/local/lib, and a "[local install](GOSSARY.d#local-install)" installs into $HOME/lib, where and how should you install your files when they are intended to be made into an RPM package? How about a Docker image? How about a jail or other chroot-like environment?
+* Management of configurable resources
+    - Let's say your company's Nagios installation has a directory where you can drop monitoring scripts and related configuration. Can our deployment system identify that directory? If any configuration files need to be modified or added, how should this be done? Whose responsibility is it to do this?
+* Specifying services offered or configurable resources shared by your own software
+    - Allow other projects may correctly "drop off" configuration files to set up your software?
+    - How can you specify that your software offers such a configurable service that other software can depend upon and use?
+* Feedback loops
+    - Each of the files in your project may need improvement. It therefore makes sense to keep them easy to understand and to make it trivial for others to offer improvements.
+    - Generated files should have a hint about how and from what they were generated
+    - Naming of resources, phases and processes should make it easy to see what's going on
 
 ### Pre-publish steps
 
@@ -74,4 +74,10 @@
     1. Run pre-install tests
     1. If 2.ii is true, install into the staging area.
 
+
+## Original source for this document
+
+- See http://pad.hackeriet.no/p/p6-deploy for initial discussions and definitions.
+- See http://pad.hackeriet.no/p/p6-deploy-spec for ideas about metadata formats and expected files and fields.
+- See http://pad.hackeriet.no/p/p6-deploy-guidelines for more in-depth thoughts of the deployment process.
 

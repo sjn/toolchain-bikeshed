@@ -1,6 +1,6 @@
 ## Terms
 
-### Core perl
+### Core Perl 6
 
 The core perl distribution, including perl6 executable, any core modules, virtual machines and other requirements, as defined by the #perl6 community.
 
@@ -8,7 +8,7 @@ The core perl distribution, including perl6 executable, any core modules, virtua
 
 Operative System or distribution (e.g. RedHat Linux, Debian Linux, FreeBSD, Solaris, Microsoft Windows, Sailfish OS, etc.) running on a specified hardware platform.
 
-### Installation sequence 
+### Installation sequence
 
 "The Perl 6 module deployment stanza"
 
@@ -81,7 +81,6 @@ An installation as needed to fulfill a specific purpose. This may include:
 - Developer install (proposed better term: "Local install")
     - Installation into a user-specific tree, intended for that one specific user's development and testing purposes
     - Intended for Application and Module installs
-- 
 
 ### Source Location
 
@@ -117,6 +116,10 @@ The packaging system used on a host system to do software installation, upgrades
 
 The publisher of the software you are about to install. This may be the original author (doing a regular release), someone else (co-releasing or creating a fork) or yourself (creating a local patched version of an upstream release, before installation).
 
+### Source package version
+
+### Source API version
+
 ### Installation target index
 
 A list containing directories where files classified as a specific type are expected to be installed (the expected target location for a file type). An index like this is system distribution specific, and intended to be vendor-, system- and user-overridable.
@@ -128,3 +131,4 @@ A directory intended to be used as a root for installation, instead of the norma
 # TODO
 
 ### CompUnitRepo
+
